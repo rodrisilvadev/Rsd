@@ -1,12 +1,16 @@
 import React from "react";
+import AnimatedBackground from "./AnimatedBackground.jsx";
 
-function HeroSection({ onIngresarClick }) {
+// Recibe applyBlur
+function HeroSection({ onIngresarClick, isHeroViewActive, applyBlur }) {
   return (
     <section
       id="hero"
       className="min-h-screen relative text-white"
       style={{ background: "#202020" }}
     >
+      {/* Pasa ambas props a AnimatedBackground */}
+      <AnimatedBackground isHeroViewActive={isHeroViewActive} applyBlur={applyBlur}/>
       <div className="absolute top-12 left-1/2 -translate-x-1/2 flex space-x-3 z-30">
         <div
           title="Español"
