@@ -1,28 +1,24 @@
-// src/components/HeroSection.jsx
 import React from "react";
-// NO importes Navbar aquí, ni lo renderices aquí
 
 function HeroSection({ onIngresarClick }) {
-  // Recibe la función como prop
   return (
     <section
       id="hero"
       className="min-h-screen relative text-white"
       style={{ background: "#202020" }}
     >
-      {/* ... (Placeholders de banderas y div de contenido principal como lo tenías) ... */}
-      <div className="absolute top-6 right-6 md:top-8 md:right-8 flex space-x-3 z-30">
+      <div className="absolute top-12 left-1/2 -translate-x-1/2 flex space-x-3 z-30">
         <div
           title="Español"
-          className="w-8 h-6 bg-red-500 border-2 border-white rounded-sm cursor-pointer flex justify-center items-center text-xs font-bold"
+          className="w-8 h-6 cursor-pointer flex justify-center items-center text-xs font-bold"
         >
-          ES
+          <img src="/ESP.png" alt="" />
         </div>
         <div
           title="English"
-          className="w-8 h-6 bg-blue-700 border-2 border-white rounded-sm cursor-pointer flex justify-center items-center text-xs font-bold"
+          className="w-8 h-6 cursor-pointer flex justify-center items-center text-xs font-bold"
         >
-          EN
+          <img src="/ENG.png" alt="" />
         </div>
       </div>
 
@@ -32,7 +28,7 @@ function HeroSection({ onIngresarClick }) {
             <img
               src="/user.webp"
               alt="Rodrigo Silva Díaz"
-              className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-white shadow-2xl"
+              className="w-auto max-w-[300px] md:max-w-[350px] lg:max-w-[400px] h-auto object-contain grayscale hover:grayscale-0 transition duration-500"
             />
           </div>
           <div className="text-center md:text-left">
