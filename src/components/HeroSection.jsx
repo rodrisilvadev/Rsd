@@ -2,15 +2,17 @@ import React from "react";
 import AnimatedBackground from "./AnimatedBackground.jsx";
 
 // Recibe applyBlur
-function HeroSection({ onIngresarClick, isHeroViewActive, applyBlur }) {
+function HeroSection({ scrollY, isMouseInteractive, applyBlur }) {
+  const parallaxOffsetY = scrollY * 0.35;
+  const fadeOutOpacity = Math.max(0, 1 - scrollY / 250);
+
   return (
-    <section
-      id="hero"
-      className="min-h-screen relative text-white"
-      style={{ background: "#202020" }}
-    >
+    <section id="hero" className="min-h-screen relative text-white">
       {/* Pasa ambas props a AnimatedBackground */}
-      <AnimatedBackground isHeroViewActive={isHeroViewActive} applyBlur={applyBlur}/>
+      <AnimatedBackground
+        isMouseInteractive={isMouseInteractive}
+        applyBlur={applyBlur}
+      />
       <div className="absolute top-12 left-1/2 -translate-x-1/2 flex space-x-3 z-30">
         <div
           title="Español"
@@ -26,16 +28,24 @@ function HeroSection({ onIngresarClick, isHeroViewActive, applyBlur }) {
         </div>
       </div>
 
-      <div className="min-h-screen flex flex-col justify-center items-center p-8 pt-20 md:pt-8 relative z-10">
+      <div
+        className="min-h-screen flex flex-col justify-center items-center p-8 pt-24 md:pt-8 relative z-10"
+        style={{
+          transform: `translateY(${parallaxOffsetY}px)`,
+          opacity: fadeOutOpacity,
+        }}
+      >
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 w-full max-w-5xl">
+          {/* Foto */}
           <div className="flex-shrink-0">
             <img
               src="/user.webp"
               alt="Rodrigo Silva Díaz"
-              className="w-auto max-w-[300px] md:max-w-[350px] lg:max-w-[400px] h-auto object-contain grayscale hover:grayscale-0 transition duration-500"
+              className="w-auto max-w-[240px] sm:max-w-[300px] md:max-w-[320px] lg:max-w-[380px] h-auto object-contain grayscale hover:grayscale-0 transition duration-500 rounded-full border-4 border-white shadow-2xl"
             />
           </div>
-          <div className="text-center md:text-left">
+          {/* Textos */}
+          <div className="text-center md:text-left mt-6 md:mt-0">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2">
               Rodrigo Silva Díaz
             </h1>
@@ -48,14 +58,6 @@ function HeroSection({ onIngresarClick, isHeroViewActive, applyBlur }) {
           </div>
         </div>
       </div>
-
-      <a
-        href="#about"
-        onClick={onIngresarClick} // <--- LLAMA a la función al hacer clic
-        className="absolute bottom-8 text-lg cursor-pointer z-20 animate-pulse md:right-8 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 font-bold hover:text-yellow-400 transition-colors duration-300"
-      >
-        INGRESAR
-      </a>
     </section>
   );
 }
