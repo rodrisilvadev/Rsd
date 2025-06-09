@@ -102,9 +102,9 @@ function AnimatedBackground({ isMouseInteractive, applyBlur }) {
         ctx.moveTo(mousePositionRef.current.x, mousePositionRef.current.y);
         ctx.lineTo(point.x, point.y);
         ctx.strokeStyle = `rgba(255, 255, 255, ${
-          0.7 * (1 - distance / mouseConnectionRadius)
+          0.85 * (1 - distance / mouseConnectionRadius)
         })`; // Opacidad aumentada
-        ctx.lineWidth = 0.35;
+        ctx.lineWidth = 0.5;
         ctx.stroke();
       }
     });
@@ -120,9 +120,9 @@ function AnimatedBackground({ isMouseInteractive, applyBlur }) {
     let numPoints;
 
     function setResponsiveNumPoints(currentWidth) {
-      if (currentWidth < 600) numPoints = 40;
-      else if (currentWidth < 900) numPoints = 70;
-      else numPoints = 100;
+      if (currentWidth < 600) numPoints = 60;
+      else if (currentWidth < 900) numPoints = 90;
+      else numPoints = 160;
     }
 
     function createPoint(currentWidth, currentHeight) {
